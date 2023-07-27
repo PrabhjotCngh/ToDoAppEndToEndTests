@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct ToDoAppEndToEndTestsApp: App {
+    let persistenceController = CoreDataManager.shared.persistentContainer
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.viewContext)
         }
     }
 }
