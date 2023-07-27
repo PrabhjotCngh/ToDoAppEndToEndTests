@@ -17,6 +17,7 @@
 		8D8986562A729074002F7AC0 /* ToDoAppEndToEndTestsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8986552A729074002F7AC0 /* ToDoAppEndToEndTestsUITestsLaunchTests.swift */; };
 		8D8986642A729224002F7AC0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8986632A729224002F7AC0 /* CoreDataManager.swift */; };
 		8D8986672A729269002F7AC0 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8986662A729269002F7AC0 /* Task+Extensions.swift */; };
+		8D8986692A72B6A9002F7AC0 /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8986682A72B6A9002F7AC0 /* TaskDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		8D8986552A729074002F7AC0 /* ToDoAppEndToEndTestsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppEndToEndTestsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8D8986632A729224002F7AC0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		8D8986662A729269002F7AC0 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
+		8D8986682A72B6A9002F7AC0 /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				8D8986622A72920B002F7AC0 /* Manager */,
 				8D8986332A729072002F7AC0 /* ToDoAppEndToEndTestsApp.swift */,
 				8D8986352A729072002F7AC0 /* ContentView.swift */,
+				8D8986682A72B6A9002F7AC0 /* TaskDetailView.swift */,
 				8D8986372A729073002F7AC0 /* Assets.xcassets */,
 				8D89863E2A729073002F7AC0 /* ToDoAppEndToEndTests.xcdatamodeld */,
 				8D8986392A729073002F7AC0 /* Preview Content */,
@@ -284,6 +287,7 @@
 			files = (
 				8D8986402A729073002F7AC0 /* ToDoAppEndToEndTests.xcdatamodeld in Sources */,
 				8D8986362A729072002F7AC0 /* ContentView.swift in Sources */,
+				8D8986692A72B6A9002F7AC0 /* TaskDetailView.swift in Sources */,
 				8D8986642A729224002F7AC0 /* CoreDataManager.swift in Sources */,
 				8D8986672A729269002F7AC0 /* Task+Extensions.swift in Sources */,
 				8D8986342A729072002F7AC0 /* ToDoAppEndToEndTestsApp.swift in Sources */,
