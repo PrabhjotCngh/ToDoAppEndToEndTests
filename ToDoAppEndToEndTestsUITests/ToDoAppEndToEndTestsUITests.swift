@@ -58,11 +58,15 @@ class when_app_is_launched: XCTestCase {
 
 class when_user_saves_a_new_task: XCTestCase {
     
-    func test_should_be_able_to_display_task_successfully() {
-        let app = XCUIApplication()
+    private var app: XCUIApplication!
+    
+    override func setUp() {
+        app = XCUIApplication()
         continueAfterFailure = false
         app.launch()
-        
+    }
+    
+    func test_should_be_able_to_display_task_successfully() {
         let titleTextField = app.textFields["titleTextField"]
         titleTextField.tap()
         titleTextField.typeText("Lets workout today")
@@ -74,7 +78,87 @@ class when_user_saves_a_new_task: XCTestCase {
         XCTAssertEqual(1, taskList.tables.count)
     }
     
+    func test_display_error_message_for_duplicate_title_tasks() {
+        let titleTextField = app.textFields["titleTextField"]
+        titleTextField.tap()
+        titleTextField.typeText("Lets workout today")
+        
+        let saveTaskButton = app.buttons["saveTaskButton"]
+        saveTaskButton.tap()
+        
+        titleTextField.tap()
+        titleTextField.typeText("Lets workout today")
+        
+        saveTaskButton.tap()
+        
+        let taskList = app.tables["taskList"]
+        XCTAssertEqual(1, taskList.cells.count)
+        
+        let messageText = app.staticTexts["messageText"]
+        XCTAssertEqual(messageText.label, "Task is already added")
+    }
+    
     override class func tearDown() {
         Springboard.deleteApp()
     }
 }
+
+class when_user_deletes_a_new_task: XCTestCase {
+    
+    private var app: XCUIApplication!
+    
+    override func setUp() {
+        app = XCUIApplication()
+        continueAfterFailure = false
+        app.launch()
+        
+        let titleTextField = app.textFields["titleTextField"]
+        titleTextField.tap()
+        titleTextField.typeText("Lets workout today")
+        
+        let saveTaskButton = app.buttons["saveTaskButton"]
+        saveTaskButton.tap()
+    }
+    
+    func test_should_delete_task_successfully() {
+        let cell = app.tables["taskList"].cells["Lets workout today, Medium"]
+        cell.swipeLeft()
+        app.tables["taskList"].buttons["Delete"].tap()
+        XCTAssertFalse(cell.exists)
+    }
+    
+    override func tearDown() {
+        Springboard.deleteApp()
+    }
+}
+
+class when_user_marks_task_as_favorite: XCTestCase {
+    
+    private var app: XCUIApplication!
+    
+    override func setUp() {
+        app = XCUIApplication()
+        continueAfterFailure = false
+        app.launch()
+        
+        let titleTextField = app.textFields["titleTextField"]
+        titleTextField.tap()
+        titleTextField.typeText("Lets workout today")
+        
+        let saveTaskButton = app.buttons["saveTaskButton"]
+        saveTaskButton.tap()
+    }
+    
+    func test_should_displayed_updated_task_on_screen_as_favorite() {
+        app.tables["taskList"].cells["Lets workout today, Medium"].tap()
+        app.images["favoriteImage"].tap()
+        app.buttons["closeButton"].tap()
+        
+        XCTAssertTrue(app.tables["taskList"].cells["Lets workout today, Love, Medium"].exists)
+    }
+    
+    override func tearDown() {
+        Springboard.deleteApp()
+    }
+}
+
